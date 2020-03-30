@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <head>
+          <title>Kalkulator</title>
+     </head>
+
+     <body>
+     <script type="text/javascript">
+
+
+var calculator = new Object();
+
+calculator.sabiranje  = function (a,b) {
+    result = a + b;
+    alert(a + " + " + b + " = " + result);
+}
+
+calculator.oduzimanje = function (a,b) {
+    result = a - b;
+    alert(a + " - " + b + " = " + result);
+}
+
+calculator.deljenje = function (a,b) {
+    result = a / b;
+    alert(a + " / " + b + " = " + result);
+}
+
+calculator.mnozenje = function (a,b) {
+    result = a * b;
+    alert(a + " * " + b + " = " + result);
+}
+
+
+var menu = new Object();
+
+menu.sabiranje = "Za sabiranje uneti karakter + \n";
+menu.oduzimanje = "Za oduzimanje uneti karakter - \n"
+menu.deljenje = "Za deljenje uneti karakter / \n"
+menu.mnozenje = "Za mnozenje uneti karakter * \n "
+menu.odustani = "Za odustajanje uneti tekst - odustani \n"
+
+
+var input = "";
+
+var a = 0;
+var b = 0;
+
+
+var showMenu = function () {
+
+    var list = [];
+
+    for (property in menu) {
+        list += menu[property];
+     }
+    input = prompt(list);
+}
+
+var isRightInput = function(symbol) {
+
+     if (symbol != "odustani" && symbol != "+" && symbol != "-" && symbol != "*" && symbol != "/") {
+          alert("upisati ispravan simbol!");
+          return false;
+     }
+     else {
+          return true;
+     }
+}
+
+
+var askNumbers = function() {
+     a = prompt ("upisati prvi broj");
+     b = prompt ("upisati drugi broj");
+
+
+     a = parseInt(a);
+     b = parseInt(b);
+
+}
+
+
+var calculateResult = function(a,b) {
+switch (input) {
+     case "+":
+
+          calculator.sabiranje(a,b);
+
+     break;
+
+     case "-":
+
+          calculator.oduzimanje(a,b);
+     break;
+
+     case "/":
+
+          calculator.deljenje(a,b);
+     break;
+
+     case "*":
+
+          calculator.mnozenje(a,b);
+     break;
+
+     case "odustani":
+     break;
+}
+}
+
+
+do {
+
+     showMenu();
+
+     if (input === "odustani") {
+        break;
+     }
+
+     else if (isRightInput(input) === true) {
+          askNumbers();
+          calculateResult(a,b);
+     }
+
+} while (input!= "odustani");
+   </script>
+   </body>
+</html>
